@@ -1,0 +1,68 @@
+description = 'Fund Implements'
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'osgi'
+apply plugin: 'ipojo'
+
+buildscript {
+	repositories{
+		mavenLocal()
+		maven{ url nivance_repo }
+	}
+}
+
+tasks.withType(Compile) { options.encoding = "UTF-8" }
+
+dependencies {
+	compile project(':fundapi')
+	
+	// Spring Framework
+	compile("org.springframework:spring-core:$springVersion") {
+		exclude module: "commons-logging"
+	}
+	compile "org.springframework:spring-context-support:$springVersion"
+	compile "org.springframework:spring-context:$springVersion"
+	compile "org.springframework:spring-tx:$springVersion"
+	compile "org.springframework:spring-oxm:$springVersion"
+	compile "org.springframework:spring-ibatis:2.0.8"
+	
+	//commons-lang3
+	compile "org.apache.commons:commons-lang3:$commonsLang3Version"
+	
+	// Testing
+	testCompile "junit:junit:$junitVersion"
+	testCompile "org.springframework:spring-test:$springVersion"
+	testCompile "org.mockito:mockito-all:$mockitoVersion"
+}
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+project.group = 'nivance.fund'
+project.archivesBaseName = 'fund-impl'
+project.version = '1.0.0'
+
+jar {
+//	exclude 'spring-asm-3.1.4.RELEASE.jar'
+//	exclude 'spring-beans-3.1.4.RELEASE.jar'
+//	exclude 'spring-context-3.1.4.RELEASE.jar'
+//	exclude 'spring-tx-3.1.4.RELEASE.jar'
+//	exclude 'spring-core-3.1.4.RELEASE.jar'
+//	exclude 'spring-aop-3.1.4.RELEASE.jar'
+//	exclude 'spring-expression-3.1.4.RELEASE.jar'
+//	exclude 'jackson-core-asl-1.9.2.jar'
+//	exclude 'ackson-mapper-asl-1.9.2.jar'
+	
+	manifest{
+//		attributes( 'Spring-Context':'applicationcontext-common.xml')
+//		attributes( 'Bundle-ActivationPolicy':'lazy')
+//		attributes( 'Bundle-Activator':'nivance.fundimpl.FundBundleActivator')
+		attributes( 'DynamicImport-Package':'*')
+		attributes( 'Export-Package':'*')
+//		attributes( 'Include-Resource':'.');
+		attributes( 'Import-Lib':'lib');
+//		attributes( 'Import-Ignore':'com.yammer.metrics,com.datastax.driver,org.springframework.data,org.springframework.cassandra,org.apache.cassandra,com.google.common,org.jboss,org.apache.ibatis,org.springframework.util,com.mchange.v2.c3p0,org.xerial.snappy')
+		
+	}
+}

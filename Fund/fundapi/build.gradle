@@ -1,0 +1,29 @@
+description = 'Fund API'
+
+
+dependencies {
+//	compile "org.codehaus.jackson:jackson-mapper-asl:$jacksonVersion"
+//	compile "org.codehaus.jackson:jackson-core-lgpl:$jacksonVersion"
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+	classifier = 'sources'
+	from sourceSets.main.allSource
+}
+
+artifacts {
+	archives sourcesJar
+}
+
+project.group = 'nivance.fund'
+project.archivesBaseName = 'fund-api'
+project.version = '1.0.0'
+
+jar {
+	manifest{
+		attributes( 'DynamicImport-Package': '*')
+		attributes( 'Include-Resource':'.');
+		attributes( 'Import-Lib':'lib');
+	}
+}
+

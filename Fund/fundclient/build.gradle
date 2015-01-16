@@ -1,0 +1,41 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'osgi'
+
+group = 'nivance'
+
+buildscript {
+	repositories{
+		mavenLocal()
+		mavenCentral()
+	}
+}
+
+repositories {
+	maven { url "repo" }
+}
+
+
+dependencies {
+	compile project(':fundapi')
+}
+
+project.group = 'nivance.fund'
+project.archivesBaseName = 'fund-client'
+project.version = '1.0.0'
+
+jar {
+	manifest{
+//		attributes( 'Created-By':'nivance')
+//		attributes( 'Bundle-Version':'1.0.0')
+//		attributes( 'Bundle-Vendor':'nivance')
+//		attributes( 'Bundle-Name':'fundapi-use')
+//		attributes( 'Bundle-SymbolicName':'fundapi-use')
+//		attributes( 'Bundle-Vendor':'nivance')
+//		attributes( 'Import-Package':'nivance.util,nivance.fund.annotataion,nivance.fund.exception,nivance.fund.api,nivance.fund.ipojo,nivance.fund.spring,org.apache.felix.ipojo.api,org.osgi.service.log,org.apache.felix.ipojo.architecture,org.apache.felix.ipojo,org.osgi.framework,org.codehaus.jackson,org.osgi.service.cm,org.slf4j,org.springframework.util')
+//		attributes( 'Import-Ignore':'nivance.fund')
+		attributes( 'DynamicImport-Package': '*')
+//		attributes( 'Spring-Context':'application-common.xml')
+		
+	}
+}

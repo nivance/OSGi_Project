@@ -1,0 +1,34 @@
+apply plugin: 'maven'
+apply plugin: 'eclipse'
+buildscript {
+	repositories{
+		mavenLocal() //
+		mavenCentral()
+	}
+	dependencies { classpath "nivance:ipojo:1.0.0" }
+}
+
+subprojects {
+	apply plugin: 'ipojo'
+
+	tasks.withType(Compile) { options.encoding = "UTF-8" }
+
+	repositories {
+		maven { url "http://repo1.maven.org/maven2" }
+		maven { url "http://repo.springsource.org/libs-snapshot" }
+		maven { url "http://repo.springsource.org/plugins-release" }
+		maven { url "repo" }
+	}
+	
+	dependencies {
+		includeInJar   'org.projectlombok:lombok:1.12.2'
+		includeInJar   'net.sf.ehcache:ehcache-core:2.5.1'
+		compile	'nivance:serialize-util:1.0.0'
+		compile 'nivance.jpa:jpa-api:1.0.0'
+		testCompile 'junit:junit:4.8.2'
+	}
+	version = '1.0.0'
+
+	jar { manifest.attributes provider: 'nivance' }
+
+}
