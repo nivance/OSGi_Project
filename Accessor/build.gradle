@@ -1,0 +1,27 @@
+apply plugin: 'maven'
+apply plugin: 'eclipse'
+buildscript {
+	repositories{
+		mavenLocal() //
+		mavenCentral()
+	}
+	dependencies { classpath "nivance:ipojo:1.0.0" }
+}
+
+subprojects {
+	apply plugin: 'ipojo'
+	
+	project.group='nivance'
+
+	tasks.withType(Compile) { options.encoding = "UTF-8" }
+	dependencies {
+		includeInJar 'org.projectlombok:lombok:1.12.2'
+		compile 'org.apache.commons:commons-lang3:3.1'
+//		compile		'nivance:serialize-util:1.0.0'
+		testCompile 'junit:junit:4.11'
+	}
+	version = '1.0.0'
+
+	jar { manifest.attributes provider: 'nivance' }
+
+}
