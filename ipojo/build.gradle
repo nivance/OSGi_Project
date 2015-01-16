@@ -1,0 +1,48 @@
+apply plugin: 'groovy'
+apply plugin:'eclipse'
+
+
+dependencies {
+	compile gradleApi()
+	compile localGroovy()
+}
+
+apply plugin: 'maven'
+apply plugin: 'java'
+
+buildscript {
+	repositories{ maven{ url "http://repo1.maven.org/maven2" } }
+}
+
+configurations { deployerJars }
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+	classifier = 'sources'
+	from sourceSets.main.allSource
+}
+
+artifacts { archives sourcesJar }
+
+project.group = 'nivance'
+project.archivesBaseName = 'ipojo'
+project.version = '1.0.0'
+
+dependencies {
+	repositories{
+		mavenLocal()
+		maven{ url "http://repo1.maven.org/maven2" }
+	}
+	compile 	'org.apache.felix:org.apache.felix.ipojo.manipulator:1.11.0'
+	compile 	'javassist:javassist:3.12.1.GA'
+	compile 	'org.springframework:spring-core:3.1.4.RELEASE'
+	compile 	'org.springframework:spring-context:3.1.4.RELEASE'
+	compile   'org.apache.felix:org.apache.felix.ipojo.annotations:1.8.4'
+	compile   'org.apache.felix:org.apache.felix.ipojo.api:1.11.0'
+	compile   'org.apache.felix:org.apache.felix.framework:4.2.1'
+	compile   'org.apache.felix:org.apache.felix.main:4.2.1'
+	deployerJars "org.apache.maven.wagon:wagon-ssh:2.2"
+
+
+	testCompile 'junit:junit:4.11'
+}
+
