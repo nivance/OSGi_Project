@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:osgi="http://www.springframework.org/schema/osgi"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+						http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+						http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+						http://www.springframework.org/schema/osgi
+                        http://www.springframework.org/schema/osgi/spring-osgi.xsd">
+
+	 <context:annotation-config />
+	<context:component-scan base-package="nivance.jpa" /> 
+	
+	<bean id="propertyConfigurer" class="nivance.impl.DBPPropertyConfigurer" init-method="init">
+		<property name="fileNames">
+			<list>
+				<value>cassandra.properties</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="cassandraClusterFactory" class="nivance.simplecass.cassandra.core.CassandraClusterFactory"
+		init-method="initCluster">
+		<property name="contactPoints" value="${cassandra.contactPoints}"/>
+		<property name="port" value="${cassandra.port}"/>
+	</bean>
+	
+	<bean id = "lotteryKM" class = "nivance.simplecass.cassandra.core.KeyspaceManager"  init-method="initTables">
+		<constructor-arg ref="cassandraClusterFactory"/>
+		<constructor-arg value="${cassandra.keyspace}"/>
+		<constructor-arg value="${replication.strategy}"/>
+		<constructor-arg value="${replication.factor}"/>
+		<constructor-arg value="${cassandra.consitencylevel}"/>
+		<property name="basePackage" value="nivance.jpa.dao"/>
+	</bean>
+	
+	<osgi:service id="cassDomainDataService" ref="cassDataService"
+		interface="nivance.impl.service.CassDomainDataService">
+		<osgi:service-properties>
+			<entry key="key" value="cassandra" />
+		</osgi:service-properties>
+	</osgi:service>
+
+	
+</beans>

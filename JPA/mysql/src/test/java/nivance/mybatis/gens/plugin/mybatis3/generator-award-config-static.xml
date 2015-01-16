@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC
+ "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+ "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<context id="LogGenconfig" targetRuntime="MyBatis3"
+		defaultModelType="hierarchical">
+		<!-- <plugin type="nivance.mybatis.gens.plugin.mybatis3.Annotated2JavaPlugin" />-->
+		<plugin type="nivance.mybatis.gens.plugin.mybatis3.MySqlJavaPlugin" />
+		<plugin type="nivance.mybatis.gens.plugin.mybatis3.SqlDaoSupportPlugin" />
+		<plugin type="nivance.mybatis.gens.plugin.mybatis3.DaoExamplePlugin" />
+		<plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />
+		<plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+		<plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin" />
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://192.168.100.60:3306/iso" userId="iso"
+			password="mysql" />
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<javaModelGenerator targetPackage="com.cwl.iso.db.mysql.entity"
+			targetProject="src/gens/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="false" />
+		</javaModelGenerator>
+		<sqlMapGenerator targetPackage="com.cwl.iso.db.mysql.award.ibatis"
+			targetProject="src/gens/java">
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+		<javaClientGenerator type="ANNOTATEDMAPPER"
+			targetPackage="com.cwl.iso.db.mysql.award.mapper" targetProject="src/gens/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		
+		<table tableName="T_AWARD_LOG" domainObjectName="AwardLog" />
+		<table tableName="T_UNAWARD_LOG" domainObjectName="UnawardLog" />
+		
+		<!-- 
+		<table tableName="T_UNAWARD_BYDAY" domainObjectName="UnawardByday" />
+		<table tableName="T_UNAWARD_ERROR" domainObjectName="UnawardError" />
+		<table tableName="T_AWARD_WARNNING" domainObjectName="AwardWarnning" />
+		<table tableName="T_LOG_PRIZEGROUP" domainObjectName="LogPrizegroup" />
+		<table tableName="T_PRIOVINCE_PRIZEGROUP" domainObjectName="PriovincePrizegroup" />
+		 <table tableName="T_LOG_UPLOAD" domainObjectName="LogUpload" />
+		<table tableName="T_LOG_IMPORT" domainObjectName="LogImport" />
+		<table tableName="T_LOG_OPERTER" domainObjectName="LogOperter" />
+		<table tableName="T_LOG_LOGIN" domainObjectName="LogLogin" />
+		<table tableName="T_LOG_PROVINCE_IMPORT" domainObjectName="LogProvinceImport" />
+		<table tableName="T_LOG_PROVINCE_UPLOAD" domainObjectName="LogProvinceUpload" />
+		<table tableName="T_LOG_DISPATCH_PRIZEGROUP" domainObjectName="LogDispatchPrizegroup" />
+		<table tableName="T_LOG_DISPATCH_RELATION" domainObjectName="LogDispatchRelation" />
+		<table tableName="T_PRIOVINCE_LOGINOUT" domainObjectName="PriovinceLoginout" />  -->
+		
+		
+	</context>
+</generatorConfiguration>

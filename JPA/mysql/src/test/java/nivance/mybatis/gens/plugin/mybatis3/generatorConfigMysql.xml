@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC
+ "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+ "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<context id="ParaGenconfig" targetRuntime="MyBatis3" defaultModelType="conditional ">
+		<!-- <plugin type="nivance.mybatis.gens.plugin.mybatis3.MySqlPaginationPlugin" /> -->
+		<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+		<plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />
+		<plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+		<plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin" />
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://192.168.3.159:3306/lottery2" userId="root"
+			password="mysql" />
+
+		<javaModelGenerator targetPackage="nivance.dbpapi.entity.mysql.para"
+			targetProject="src/gens/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="false" />
+		</javaModelGenerator>
+
+		<sqlMapGenerator targetPackage="nivance.dbpimpl.sql.para.ibatis"
+			targetProject="src/gens/java">
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+
+		<!-- <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="nivance.gens.jpa.mapper" 
+			targetProject="src/gens/java"> <property name="enableSubPackages" value="true" 
+			/> </javaClientGenerator>  -->
+
+		<!-- <javaClientGenerator type="XMLMAPPER" targetPackage="nivance.gens.jpa.mapper" 
+			targetProject="src/gens/java"> <property name="enableSubPackages" value="true" 
+			/> </javaClientGenerator> -->
+
+		<javaClientGenerator type="MIXEDMAPPER"
+			targetPackage="nivance.dbpimpl.sql.para.mapper" targetProject="src/gens/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator> 
+		<table tableName="T_PARA_DBPROPERTIES" domainObjectName="ParaDbproperties" />
+		<table tableName="T_PARA_DRAWNUMBER" domainObjectName="ParaDrawnumber"/>
+	</context>
+</generatorConfiguration>

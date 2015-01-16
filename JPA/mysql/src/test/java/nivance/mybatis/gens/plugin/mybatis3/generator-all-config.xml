@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC
+ "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+ "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	 <context id="ParaGenconfig" targetRuntime="MyBatis3"
+		defaultModelType="hierarchical">
+		<!-- <plugin type="nivance.mybatis.gens.plugin.mybatis3.Annotated2JavaPlugin" />-->
+		<plugin type="nivance.mybatis.gens.plugin.mybatis3.MySqlJavaPlugin" />
+		<plugin type="nivance.mybatis.gens.plugin.mybatis3.SqlDaoSupportPlugin" />
+		<plugin type="nivance.mybatis.gens.plugin.mybatis3.DaoExamplePlugin" />
+		<plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />
+		<plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+		<plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin" />
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://192.168.24.31:3306/iso" userId="iso"
+			password="mysql" />
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<javaModelGenerator targetPackage="com.cwl.iso.db.mysql.entity"
+			targetProject="src/gens/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="false" />
+		</javaModelGenerator>
+		<sqlMapGenerator targetPackage="com.cwl.iso.db.mysql.para.ibatis"
+			targetProject="src/gens/java">
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+		<javaClientGenerator type="ANNOTATEDMAPPER"
+			targetPackage="com.cwl.iso.db.mysql.para.mapper" targetProject="src/gens/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		<table tableName="T_PARA_DBPROPERTIES" domainObjectName="ParaDbproperties" />
+		<table tableName="T_PARA_PRIOVINCE_MANAGE" domainObjectName="ParaPriovinceManage" />
+	</context>  
+	
+	<context id="LogGenconfig" targetRuntime="MyBatis3"
+		defaultModelType="hierarchical">
+		<!-- <plugin type="nivance.mybatis.gens.plugin.mybatis3.Annotated2JavaPlugin" />-->
+		<plugin type="nivance.mybatis.gens.plugin.mybatis3.MySqlJavaPlugin" />
+		<plugin type="nivance.mybatis.gens.plugin.mybatis3.SqlDaoSupportPlugin" />
+		<plugin type="nivance.mybatis.gens.plugin.mybatis3.DaoExamplePlugin" />
+		<plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />
+		<plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+		<plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin" />
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://192.168.24.31:3306/iso" userId="iso"
+			password="mysql" />
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<javaModelGenerator targetPackage="com.cwl.iso.db.mysql.entity"
+			targetProject="src/gens/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="false" />
+		</javaModelGenerator>
+		<sqlMapGenerator targetPackage="com.cwl.iso.db.mysql.log.ibatis"
+			targetProject="src/gens/java">
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+		<javaClientGenerator type="ANNOTATEDMAPPER"
+			targetPackage="com.cwl.iso.db.mysql.log.mapper" targetProject="src/gens/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		<table tableName="T_UNAWARD_ERROR_20140515" domainObjectName="UnawardError" />
+		<table tableName="T_AWARD_20140515" domainObjectName="Award" />
+		 <table tableName="T_LOG_UPLOAD" domainObjectName="LogUpload" />
+		<table tableName="T_LOG_IMPORT" domainObjectName="LogImport" />
+		<table tableName="T_LOG_PRIZEGROUP" domainObjectName="LogPrizegroup" />
+		<table tableName="T_LOG_OPERTER" domainObjectName="LogOperter" />
+		<table tableName="T_LOG_LOGIN" domainObjectName="LogLogin" />
+		<table tableName="T_PRIOVINCE_LOGINOUT" domainObjectName="PriovinceLoginout" /> 
+	</context>
+	
+	<context id="StatGenconfig" targetRuntime="MyBatis3"
+		defaultModelType="hierarchical">
+		<!-- <plugin type="nivance.mybatis.gens.plugin.mybatis3.Annotated2JavaPlugin" />-->
+		<plugin type="nivance.mybatis.gens.plugin.mybatis3.MySqlJavaPlugin" />
+		<plugin type="nivance.mybatis.gens.plugin.mybatis3.SqlDaoSupportPlugin" />
+		<plugin type="nivance.mybatis.gens.plugin.mybatis3.DaoExamplePlugin" />
+		<plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />
+		<plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+		<plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin" />
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://192.168.24.31:3306/iso" userId="iso"
+			password="mysql" />
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<javaModelGenerator targetPackage="com.cwl.iso.db.mysql.entity"
+			targetProject="src/gens/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="false" />
+		</javaModelGenerator>
+		<sqlMapGenerator targetPackage="com.cwl.iso.db.mysql.stat.ibatis"
+			targetProject="src/gens/java">
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+		<javaClientGenerator type="ANNOTATEDMAPPER"
+			targetPackage="com.cwl.iso.db.mysql.stat.mapper" targetProject="src/gens/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		
+		<table tableName="T_STAT_PRIZEGRADE_BYYEAR" domainObjectName="StatPrizegradeByyear" />
+		<table tableName="T_STAT_BATCH_BYYEAR" domainObjectName="StatBatchByyear" />
+		<table tableName="T_STAT_GAMECODE_BYYEAR" domainObjectName="StatGamecodeByyear" />
+		<table tableName="T_STAT_PROVINCE_BYYEAR" domainObjectName="StatProvinceByyear" />
+		<table tableName="T_STAT_PRIZEGRADE_BYDAY" domainObjectName="StatPrizegradeByday" />
+		<table tableName="T_STAT_BATCH_BYDAY" domainObjectName="StatBatchByday" />
+		<table tableName="T_STAT_GAMECODE_BYDAY" domainObjectName="StatGamecodeByday" />
+		<table tableName="T_STAT_PROVINCE_BYDAY" domainObjectName="StatProvinceByday" />
+		<table tableName="T_STAT_PRIZEGRADE_BYMONTH" domainObjectName="StatPrizegradeBymonth" />
+		<table tableName="T_STAT_BATCH_BYMONTH" domainObjectName="StatBatchBymonth" />
+		<table tableName="T_STAT_GAMECODE_BYMONTH" domainObjectName="StatGamecodeBymonth" />
+		<table tableName="T_STAT_PROVINCE_BYMONTH" domainObjectName="StatProvinceBymonth" />
+	</context> 
+	<context id="AdminGenconfig" targetRuntime="MyBatis3"
+		defaultModelType="hierarchical">
+		<!-- <plugin type="nivance.mybatis.gens.plugin.mybatis3.Annotated2JavaPlugin" />-->
+		<plugin type="nivance.mybatis.gens.plugin.mybatis3.MySqlJavaPlugin" />
+		<plugin type="nivance.mybatis.gens.plugin.mybatis3.SqlDaoSupportPlugin" />
+		<plugin type="nivance.mybatis.gens.plugin.mybatis3.DaoExamplePlugin" />
+		<plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />
+		<plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+		<plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin" />
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://192.168.24.31:3306/iso" userId="iso"
+			password="mysql" />
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<javaModelGenerator targetPackage="com.cwl.iso.db.mysql.entity"
+			targetProject="src/gens/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="false" />
+		</javaModelGenerator>
+		<sqlMapGenerator targetPackage="com.cwl.iso.db.mysql.admin.ibatis"
+			targetProject="src/gens/java">
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+		<javaClientGenerator type="ANNOTATEDMAPPER"
+			targetPackage="com.cwl.iso.db.mysql.admin.mapper" targetProject="src/gens/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		<table tableName="T_ADMIN_OPERATOR" domainObjectName="AdminOperator" />
+		<table tableName="T_ADMIN_OPERATOR_ROLE" domainObjectName="AdminOperatorRole" />
+		<table tableName="T_ADMIN_PERMISSION" domainObjectName="AdminPermission" />
+		<table tableName="T_ADMIN_ROLE" domainObjectName="AdminRole" />
+		<table tableName="T_ADMIN_ROLE_PERMISSION" domainObjectName="AdminRolePermission" />
+	</context>  
+</generatorConfiguration>

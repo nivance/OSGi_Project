@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<context id="genconfig" targetRuntime="Ibatis2Java5">
+		<plugin type="nivance.mybatis.gens.core.FindByPagePluginOracle" />
+		<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+		<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+			connectionURL="jdbc:oracle:thin:@192.168.3.21:1521:lottery" userId="limingjian"
+			password="limingjian456" />
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		    
+		<javaModelGenerator targetPackage="nivance.dbpapi.entity.mysql"
+			targetProject="src/gens/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="false" />
+		</javaModelGenerator>
+		<sqlMapGenerator targetPackage="nivance.dbpimpl.sql.ibatis"
+			targetProject="src/gens/java">
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+		<javaClientGenerator targetPackage="nivance.dbpimpl.sql.dao"
+			implementationPackage="nivance.dbpimpl.sql.impl"
+			targetProject="src/gens/java" type="SPRING">
+			<property name="enableSubPackages" value="false" />
+		</javaClientGenerator>
+<!-- 		<table tableName="T_CORE_GXK3_MESSAGEID_UNIQUE" domainObjectName="CoreGxk3MessageidUnique"/> -->
+		<table tableName="T_CORE_GXK3_PREV" domainObjectName="CoreGxk3Prev"/>
+		<table tableName="T_CORE_GXK3_PREV_HIS" domainObjectName="CoreGxk3PrevHis"/>
+		 
+	</context>
+</generatorConfiguration>

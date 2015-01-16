@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	 <context id="ParaGenconfig" targetRuntime="Ibatis2Java5" defaultModelType="hierarchical" >
+		<plugin type="nivance.mybatis.gens.plugin.mybatis2.FindByPagePluginMysql" />
+		<plugin type="nivance.mybatis.gens.plugin.mybatis2.DaoExamplePlugin" />
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://192.168.3.159:3306/lottery2" userId="root" password="mysql"  />
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<javaModelGenerator targetPackage="nivance.dbpapi.entity.mysql"
+			targetProject="src/gens/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="false" />
+		</javaModelGenerator>
+		<sqlMapGenerator targetPackage="nivance.dbpimpl.sql.para.ibatis"
+			targetProject="src/gens/java">
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+		<javaClientGenerator targetPackage="nivance.dbpimpl.sql.para.dao"
+			implementationPackage="nivance.dbpimpl.sql.para.impl"
+			targetProject="src/gens/java" type="SPRING">
+			<property name="enableSubPackages" value="false" />
+		</javaClientGenerator>
+		<table tableName="T_PARA_CREATETABLE" domainObjectName="ParaCreatetable"/>
+		<table tableName="T_PARA_DBPROPERTIES" domainObjectName="ParaDbproperties"/>
+		<table tableName="T_PARA_DRAWNUMBER" domainObjectName="ParaDrawnumber"/>
+		<table tableName="T_PARA_LIMITED_FEATURE" domainObjectName="ParaLimitedFeature"/>
+		<table tableName="T_PARA_LIMITED_NUM" domainObjectName="ParaLimitedNum"/>
+	</context>
+	
+	<context id="DayendGenconfig" targetRuntime="Ibatis2Java5" defaultModelType="hierarchical">
+		<plugin type="nivance.mybatis.gens.plugin.mybatis2.FindByPagePluginMysql" />
+		<plugin type="nivance.mybatis.gens.plugin.mybatis2.DaoExamplePlugin" />
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://192.168.3.159:3306/lottery2" userId="root" password="mysql"  />
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<javaModelGenerator targetPackage="nivance.dbpapi.entity.mysql"
+			targetProject="src/gens/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="false" />
+		</javaModelGenerator>
+		<sqlMapGenerator targetPackage="nivance.dbpimpl.sql.dayend.ibatis"
+			targetProject="src/gens/java">
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+		<javaClientGenerator targetPackage="nivance.dbpimpl.sql.dayend.dao"
+			implementationPackage="nivance.dbpimpl.sql.dayend.impl"
+			targetProject="src/gens/java" type="SPRING">
+			<property name="enableSubPackages" value="false" />
+		</javaClientGenerator>
+		<table tableName="T_DAYEND_ERROR" domainObjectName="DayendError"/>
+	</context>
+	
+	<context id="CoreGenconfig" targetRuntime="Ibatis2Java5" defaultModelType="hierarchical">
+		<plugin type="nivance.mybatis.gens.plugin.mybatis2.FindByPagePluginMysql" />
+		<plugin type="nivance.mybatis.gens.plugin.mybatis2.DaoExamplePlugin" />
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://192.168.3.159:3306/lottery2" userId="root" password="mysql"  />
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<javaModelGenerator targetPackage="nivance.dbpapi.entity.mysql"
+			targetProject="src/gens/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="false" />
+		</javaModelGenerator>
+		<sqlMapGenerator targetPackage="nivance.dbpimpl.sql.core.ibatis"
+			targetProject="src/gens/java">
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+		<javaClientGenerator targetPackage="nivance.dbpimpl.sql.core.dao"
+			implementationPackage="nivance.dbpimpl.sql.core.impl"
+			targetProject="src/gens/java" type="SPRING">
+			<property name="enableSubPackages" value="false" />
+		</javaClientGenerator>
+		<table tableName="T_CORE_BIGPRIZE" domainObjectName="CoreBigprize"/>
+		<table tableName="T_CORE_NOTICE" domainObjectName="CoreNotice"/>
+		<table tableName="T_CORE_PRIZE" domainObjectName="CorePrize"/>
+		<table tableName="T_CORE_PRIZEINFO" domainObjectName="CorePrizeinfo"/>
+		<table tableName="T_CORE_REGION_V" domainObjectName="CoreRegionV"/>
+		<table tableName="T_CORE_RO" domainObjectName="CoreRo"/>
+		<table tableName="T_CORE_TICKETPRIZE" domainObjectName="CoreTicketprize"/>
+		<table tableName="T_CORE_VO" domainObjectName="CoreVo"/>
+		<table tableName="T_CORE_WIN" domainObjectName="CoreWin"/>
+		<table tableName="T_CORE_WIN_MARGER" domainObjectName="CoreWinMarger"/>
+	</context>
+	
+	<context id="StatGenconfig" targetRuntime="Ibatis2Java5" defaultModelType="hierarchical">
+		<plugin type="nivance.mybatis.gens.plugin.mybatis2.FindByPagePluginMysql" />
+		<plugin type="nivance.mybatis.gens.plugin.mybatis2.DaoExamplePlugin" />
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://192.168.3.159:3306/lottery2" userId="root" password="mysql"  />
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<javaModelGenerator targetPackage="nivance.dbpapi.entity.mysql"
+			targetProject="src/gens/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="false" />
+		</javaModelGenerator>
+		<sqlMapGenerator targetPackage="nivance.dbpimpl.sql.stat.ibatis"
+			targetProject="src/gens/java">
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+		<javaClientGenerator targetPackage="nivance.dbpimpl.sql.stat.dao"
+			implementationPackage="nivance.dbpimpl.sql.wager.impl"
+			targetProject="src/gens/java" type="SPRING">
+			<property name="enableSubPackages" value="false" />
+		</javaClientGenerator>
+		<table tableName="T_STAT_BYDAY" domainObjectName="StatByday"/>
+		<table tableName="T_STAT_WAGERDATA" domainObjectName="StatWagerdata"/>
+		<table tableName="T_STAT_WAGERDATA_OFF" domainObjectName="StatWagerdataOff"/>
+		<table tableName="T_STAT_WINDATA" domainObjectName="StatWindata"/>
+	</context>
+	
+	<context id="AdminGenconfig" targetRuntime="Ibatis2Java5" defaultModelType="hierarchical">
+		<plugin type="nivance.mybatis.gens.plugin.mybatis2.FindByPagePluginMysql" />
+		<plugin type="nivance.mybatis.gens.plugin.mybatis2.DaoExamplePlugin" />
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://192.168.3.159:3306/lottery2" userId="root" password="mysql"  />
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<javaModelGenerator targetPackage="nivance.dbpapi.entity.mysql"
+			targetProject="src/gens/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="false" />
+		</javaModelGenerator>
+		<sqlMapGenerator targetPackage="nivance.dbpimpl.sql.admin.ibatis"
+			targetProject="src/gens/java">
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+		<javaClientGenerator targetPackage="nivance.dbpimpl.sql.admin.dao"
+			implementationPackage="nivance.dbpimpl.sql.admin.impl"
+			targetProject="src/gens/java" type="SPRING">
+			<property name="enableSubPackages" value="false" />
+		</javaClientGenerator>
+		<table tableName="T_ADMIN_OPERATOR" domainObjectName="AdminOperator"/>
+		<table tableName="T_ADMIN_OPERATOR_ROLE" domainObjectName="AdminOperatorRole"/>
+		<table tableName="T_ADMIN_PERMISSION" domainObjectName="AdminPermission"/>
+		<table tableName="T_ADMIN_ROLE" domainObjectName="AdminRole"/>
+		<table tableName="T_ADMIN_ROLE_PERMISSION" domainObjectName="AdminRolePermission"/>
+	</context>
+	
+	<context id="AccountGenconfig" targetRuntime="Ibatis2Java5" defaultModelType="hierarchical">
+		<plugin type="nivance.mybatis.gens.plugin.mybatis2.FindByPagePluginMysql" />
+		<plugin type="nivance.mybatis.gens.plugin.mybatis2.DaoExamplePlugin" />
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://192.168.3.159:3306/lottery2" userId="root" password="mysql"  />
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<javaModelGenerator targetPackage="nivance.dbpapi.entity.mysql"
+			targetProject="src/gens/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="false" />
+		</javaModelGenerator>
+		<sqlMapGenerator targetPackage="nivance.dbpimpl.sql.account.ibatis"
+			targetProject="src/gens/java">
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+		<javaClientGenerator targetPackage="nivance.dbpimpl.sql.account.dao"
+			implementationPackage="nivance.dbpimpl.sql.account.impl"
+			targetProject="src/gens/java" type="SPRING">
+			<property name="enableSubPackages" value="false" />
+		</javaClientGenerator>
+		<table tableName="T_ACC_ACCOUNT" domainObjectName="AccAccount"/>
+		<table tableName="T_ACC_ACCOUNT_FLOW" domainObjectName="AccAccountFlow"/>
+		<table tableName="T_ACC_PRIZEMAIL_FLOW" domainObjectName="AccPrizemailFlow"/>
+		<table tableName="T_ACC_REGIONAMOUNT_FLOW" domainObjectName="AccRegionamountFlow"/>
+	</context> 
+	
+	<context id="PerwinGenconfig" targetRuntime="Ibatis2Java5" defaultModelType="hierarchical">
+		<plugin type="nivance.mybatis.gens.plugin.mybatis2.FindByPagePluginMysql" />
+		<plugin type="nivance.mybatis.gens.plugin.mybatis2.DaoExamplePlugin" />
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://192.168.3.159:3306/lottery2" userId="root" password="mysql"  />
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<javaModelGenerator targetPackage="nivance.dbpapi.entity.mysql"
+			targetProject="src/gens/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="false" />
+		</javaModelGenerator>
+		<sqlMapGenerator targetPackage="nivance.dbpimpl.sql.perwin.ibatis"
+			targetProject="src/gens/java">
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+		<javaClientGenerator targetPackage="nivance.dbpimpl.sql.perwin.dao"
+			implementationPackage="nivance.dbpimpl.sql.perwin.impl"
+			targetProject="src/gens/java" type="SPRING">
+			<property name="enableSubPackages" value="false" />
+		</javaClientGenerator>
+		<table tableName="T_PRE_WIN" domainObjectName="PreWin"/>
+		<table tableName="T_PRE_WIN_REPORT" domainObjectName="PreWinReport"/>
+	</context>
+</generatorConfiguration>

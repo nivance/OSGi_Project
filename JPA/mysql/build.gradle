@@ -1,0 +1,58 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'osgi'
+apply plugin: 'ipojo'
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+	classifier = 'sources'
+	from sourceSets.main.allSource
+}
+
+artifacts {
+	archives sourcesJar
+}
+
+project.group = 'nivance.jpa'
+project.archivesBaseName = 'jpa-mysql'
+project.version = '1.0.0'
+
+dependencies {
+	compile project(':jpaimpl')
+	// Spring Framework
+	compile("org.springframework:spring-core:$springVersion") { exclude module: "commons-logging" }
+	compile "org.springframework:spring-context-support:$springVersion"
+	compile "org.springframework:spring-context:$springVersion"
+	compile "org.springframework:spring-tx:$springVersion"
+	compile "org.springframework:spring-oxm:$springVersion"
+	compile "org.springframework:spring-ibatis:2.0.8"
+	//ibatis3
+	compile "org.mybatis:mybatis:3.1.1"
+	compile "org.mybatis:mybatis-spring:1.2.1"
+	compile "org.apache.ibatis:ibatis-sqlmap:2.3.0"
+	//mybatis-generator
+	compile "org.mybatis.generator:mybatis-generator-core:1.3.2"
+	//commons-lang3
+	compile "org.apache.commons:commons-lang3:3.1"
+	//freemarker
+	compile "org.freemarker:freemarker:2.3.19"
+	// Mappers
+	compile "commons-beanutils:commons-beanutils-core:1.8.3"
+	compile "cglib:cglib-nodep:2.2"
+	
+	includeInJar 'org.aspectj:aspectjweaver:1.8.0'
+	
+	includeInJar 'org.apache.thrift:libthrift:0.9.1'
+	includeInJar files('libs/mysql-connector-java-5.1.6-bin.jar','libs/com.springsource.com.mchange.v2.c3p0-0.9.1.2modifu.jar')
+}
+jar {
+	manifest{
+		attributes( 'Bundle-Activator':'nivance.jpa.mysql.DBISOMysqlActivator')
+		attributes( 'DynamicImport-Package':'*')
+		attributes( 'Export-Package':'*')
+		attributes( 'Include-Resource':'.');
+		attributes( 'Import-Lib':'lib');
+		attributes( 'Import-Ignore':'com.yammer.metrics,org.springdata.data,org.springdata.cassandra,org.apache.cassandra,com.google.common,org.jboss,org.apache.ibatis,org.springframework.util,com.mchange.v2.c3p0,org.xerial.snappy,org.apache.commons.lang')
+	}
+}
+
+

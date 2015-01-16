@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:osgi="http://www.springframework.org/schema/osgi"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+						http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
+
+	<context:annotation-config />
+	<context:component-scan base-package="nivance.jpa.redis" />
+
+	<bean id="daos" class="org.springframework.beans.factory.config.MapFactoryBean">
+		<property name="sourceMap">
+			<map merge="true" key-type="java.lang.String" value-type="nivance.jpa.redis.dao.RedisDataInfoDao">
+				<entry key="gameCode" value-ref="gameCodeInfoDao" />
+			</map>
+		</property>
+	</bean>
+
+	<osgi:service id="springDBRedisLBHolder" ref="springCtxHolderImpl" interface="nivance.jpa.redis.osgi.SpringCtxHolder" />
+
+	<osgi:service id="redisDbService" ref="redisDaoSupportImpl" interface="nivance.impl.service.RedisDaoSupport">
+		<osgi:service-properties>
+			<entry key="key" value="redis" />
+		</osgi:service-properties>
+	</osgi:service>
+
+</beans>

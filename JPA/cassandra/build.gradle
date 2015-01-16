@@ -1,0 +1,66 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'osgi'
+apply plugin: 'ipojo'
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+	classifier = 'sources'
+	from sourceSets.main.allSource
+}
+
+artifacts {
+	archives sourcesJar
+}
+
+project.group = 'nivance.jpa'
+project.archivesBaseName = 'jpa-cassandra'
+project.version = '1.0.0'
+
+dependencies {
+	compile project(':jpaimpl')
+	// Spring Framework
+	compile("org.springframework:spring-core:$springVersion") { exclude module: "commons-logging" }
+	compile "org.springframework:spring-context-support:$springVersion"
+	compile "org.springframework:spring-context:$springVersion"
+	compile "org.springframework:spring-tx:$springVersion"
+	compile "org.springframework:spring-oxm:$springVersion"
+	compile "org.springframework:spring-ibatis:2.0.8"
+	//commons-lang3
+	compile "org.apache.commons:commons-lang3:$commonsLang3Version"
+	// Cassandra Drivers
+	includeInJar "com.datastax.cassandra:cassandra-driver-core:$datastaxVersion"
+	includeInJar "org.apache.cassandra:cassandra-all:$cassandraVersion"
+	compile "cglib:cglib-nodep:2.2"
+	//spring-data-commons
+	compile 'org.springframework.data:spring-data-commons:1.6.2.RELEASE'
+
+	includeInJar 'org.apache.thrift:libthrift:0.9.1'
+}
+
+jar {
+	exclude 'avro-1.4.0-cassandra-1.jar'
+	exclude 'spring-beans-3.1.4.RELEASE.jar'
+	exclude 'spring-context-3.1.4.RELEASE.jar'
+	exclude 'spring-tx-3.1.4.RELEASE.jar'
+	exclude 'spring-core-3.1.4.RELEASE.jar'
+	exclude 'spring-aop-3.1.4.RELEASE.jar'
+	exclude 'spring-expression-3.1.4.RELEASE.jar'
+	exclude 'antlr-2.7.7.jar'
+	exclude 'servlet-api-2.5.jar'
+	exclude 'servlet-api-2.5-20081211.jar'
+	exclude 'snappy-java-1.0.5.jar'
+	exclude 'spring-data-commons-1.6.2.RELEASE.jar'
+	exclude 'jackson-core-asl-1.9.2.jar'
+	exclude 'ackson-mapper-asl-1.9.2.jar'
+	exclude 'aopalliance-1.0.jar'
+
+	manifest{
+//		attributes( 'Spring-Context':'SpringContext-Common.xml,SpringContext-Cassandra.xml')
+		attributes( 'Bundle-Activator':'nivance.jpa.cassandra.DBCassandraBundleActivator')
+		attributes( 'DynamicImport-Package':'*')
+		attributes( 'Export-Package':'*')
+		attributes( 'Include-Resource':'.');
+		attributes( 'Import-Lib':'lib');
+		attributes( 'Import-Ignore':'com.yammer.metrics,com.datastax.driver,org.springdata.data,org.springdata.cassandra,org.apache.cassandra,com.google.common,org.jboss,org.apache.ibatis,org.springframework.util,org.xerial.snappy,org.apache.commons.lang,org.apache.avro')
+	}
+}

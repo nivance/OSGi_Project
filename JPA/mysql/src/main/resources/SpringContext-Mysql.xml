@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:cassandra="http://www.springframework.org/schema/data/cassandra"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:osgi="http://www.springframework.org/schema/osgi"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+						http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+                         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+                         http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+                          http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+						http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd
+                         http://www.springframework.org/schema/data/cassandra http://www.springframework.org/schema/data/cassandra/spring-cassandra-1.0.xsd">
+
+	<bean id="DS_isopara" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="jndi/iso_para"></property>
+		<property name="resourceRef">
+			<value>true</value>
+		</property>
+	</bean>
+	<bean id="DS_isopara_bak" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="jndi/iso_para_bak"></property>
+		<property name="resourceRef">
+			<value>true</value>
+		</property>
+	</bean>
+	
+	<bean id="DS_isolog" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="jndi/iso_log"></property>
+		<property name="resourceRef">
+			<value>true</value>
+		</property>
+	</bean>
+	<bean id="DS_isolog_bak" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="jndi/iso_log_bak"></property>
+		<property name="resourceRef">
+			<value>true</value>
+		</property>
+	</bean>
+	
+	<bean id="DS_isostat" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="jndi/iso_stat"></property>
+		<property name="resourceRef">
+			<value>true</value>
+		</property>
+	</bean>
+	<bean id="DS_isostat_bak" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="jndi/iso_stat_bak"></property>
+		<property name="resourceRef">
+			<value>true</value>
+		</property>
+	</bean>
+	
+	<bean id="DS_isomig" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="jndi/iso_mig"></property>
+		<property name="resourceRef">
+			<value>true</value>
+		</property>
+	</bean> 
+	<!-- 本地调试，JNDI 替换为c3p0 
+	<bean id="propertyConfigurer" class="com.cwl.iso.db.set.DBPPropertyConfigurer"
+		init-method="init">
+		<property name="fileNames">
+			<list>
+				<value>datasource.properties</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="DS_isopara" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${mysql.jdbc.driver}" />
+		<property name="jdbcUrl" value="${mysql.jdbc.url.isopara}" />
+		<property name="user" value="${mysql.jdbc.username.isopara}" />
+		<property name="password" value="${mysql.jdbc.password.isopara}" />
+	</bean>
+	<bean id="DS_isolog" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${mysql.jdbc.driver}" />
+		<property name="jdbcUrl" value="${mysql.jdbc.url.isolog}" />
+		<property name="user" value="${mysql.jdbc.username.isolog}" />
+		<property name="password" value="${mysql.jdbc.password.isolog}" />
+	</bean>
+	<bean id="DS_isostat" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${mysql.jdbc.driver}" />
+		<property name="jdbcUrl" value="${mysql.jdbc.url.isostat}" />
+		<property name="user" value="${mysql.jdbc.username.isostat}" />
+		<property name="password" value="${mysql.jdbc.password.isostat}" />
+	</bean>
+	<bean id="DS_isomig" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${mysql.jdbc.driver}" />
+		<property name="jdbcUrl" value="${mysql.jdbc.url.isomig}" />
+		<property name="user" value="${mysql.jdbc.username.isomig}" />
+		<property name="password" value="${mysql.jdbc.password.isomig}" />
+	</bean>-->
+	<bean id="dynamicDataSource" class="nivance.jpa.mysql.jpa.sub.DynamicDataSource">
+		<property name="targetDataSources">
+			<map key-type="java.lang.String">
+				<entry key="DS_isopara" value-ref="DS_isopara" />
+				<entry key="DS_isolog" value-ref="DS_isolog" />
+				<entry key="DS_isostat" value-ref="DS_isostat" />
+				<entry key="DS_isomig" value-ref="DS_isomig" />
+
+				<entry key="DS_isopara_bak" value-ref="DS_isopara_bak" />
+				<entry key="DS_isolog_bak" value-ref="DS_isolog_bak" />
+				<entry key="DS_isostat_bak" value-ref="DS_isostat_bak" />
+			</map>
+		</property>
+		<property name="defaultDataSource" ref="DS_isopara" />
+	</bean>
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dynamicDataSource" />
+	</bean>
+
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dynamicDataSource" />
+	</bean>
+
+	<tx:annotation-driven proxy-target-class="true"
+		transaction-manager="transactionManager" />
+	<tx:advice id="MysqlAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="*elete*" propagation="REQUIRED" />
+			<tx:method name="*pdate*" propagation="REQUIRED" />
+			<tx:method name="*nsert*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+	<!-- 配置参与事务的类 -->
+	<aop:config>
+		<aop:pointcut id="allTestServiceMethod"
+			expression="execution(* nivance.jpa.mysql.*.dao.*.*(..))" />
+		<aop:advisor pointcut-ref="allTestServiceMethod"
+			advice-ref="MysqlAdvice" />
+	</aop:config>
+</beans>

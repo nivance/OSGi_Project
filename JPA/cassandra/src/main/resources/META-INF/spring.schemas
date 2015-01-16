@@ -1,0 +1,2 @@
+http\://www.springdata.org/schema/cassandra/cassandra-1.0.xsd=nivance/db/cassandra/prepare/config/cassandra-1.0.xsd
+http\://www.springdata.org/schema/cassandra/cassandra.xsd=nivance/db/cassandra/prepare/config/cassandra-1.0.xsd

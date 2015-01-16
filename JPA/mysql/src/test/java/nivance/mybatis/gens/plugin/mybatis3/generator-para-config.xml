@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC
+ "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+ "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	 <context id="ParaGenconfig" targetRuntime="MyBatis3"
+		defaultModelType="hierarchical">
+		<!-- <plugin type="nivance.mybatis.gens.plugin.mybatis3.Annotated2JavaPlugin" />-->
+		<plugin type="nivance.mybatis.gens.plugin.mybatis3.MySqlJavaPlugin" />
+		<plugin type="nivance.mybatis.gens.plugin.mybatis3.SqlDaoSupportPlugin" />
+		<plugin type="nivance.mybatis.gens.plugin.mybatis3.DaoExamplePlugin" />
+		<plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />
+		<plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+		<plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin" />
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://192.168.24.31:3306/iso" userId="iso"
+			password="mysql" />
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<javaModelGenerator targetPackage="com.cwl.iso.db.mysql.entity"
+			targetProject="src/gens/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="false" />
+		</javaModelGenerator>
+		<sqlMapGenerator targetPackage="com.cwl.iso.db.mysql.para.ibatis"
+			targetProject="src/gens/java">
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+		<javaClientGenerator type="ANNOTATEDMAPPER"
+			targetPackage="com.cwl.iso.db.mysql.para.mapper" targetProject="src/gens/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		<!-- <table tableName="T_PARA_DBPROPERTIES" domainObjectName="ParaDbproperties" />
+		<table tableName="T_PARA_SERVERCONFIG" domainObjectName="ParaServerconfig" />
+		-->
+		<table tableName="T_PARA_PRIOVINCE_MANAGE" domainObjectName="ParaPriovinceManage" /> 
+	</context>  
+</generatorConfiguration>

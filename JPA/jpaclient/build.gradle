@@ -1,0 +1,22 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'osgi'
+apply plugin: 'ipojo'
+
+dependencies {
+	compile project(':jpaapi')
+	testCompile "org.springframework:spring-test:3.1.4.RELEASE"
+	testCompile "junit:junit:4.8.1"
+}
+
+project.group = 'nivance.jpa'
+project.archivesBaseName = 'jpa-client'
+project.version = '1.0.0'
+
+jar {
+	manifest{
+		attributes( 'DynamicImport-Package': '*')
+		attributes( 'Spring-Context':'SpringContext-Common.xml')
+//		attributes( 'Import-Ignore':'com.yammer.metrics,com.datastax.driver,org.springframework.data,org.springframework.cassandra,org.apache.cassandra,com.google.common,org.jboss,org.xerial,org.apache.ibatis,org.springframework.util,com.mchange.v2.c3p0')
+	}
+}

@@ -1,0 +1,43 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'osgi'
+apply plugin: 'ipojo'
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+	classifier = 'sources'
+	from sourceSets.main.allSource
+}
+
+artifacts {
+	archives sourcesJar
+}
+
+dependencies {
+	compile project(':jpaapi')
+	// Spring Framework
+	compile("org.springframework:spring-core:$springVersion") { exclude module: "commons-logging" }
+	compile "org.springframework:spring-context-support:$springVersion"
+	compile "org.springframework:spring-context:$springVersion"
+	compile "org.springframework:spring-tx:$springVersion"
+	compile "org.springframework:spring-oxm:$springVersion"
+	compile "org.springframework:spring-ibatis:2.0.8"
+	compile ('org.springframework.osgi:spring-osgi-core:1.2.1'){
+		exclude group:'org.springframework'
+	}
+}
+
+project.group = 'nivance.jpa'
+project.archivesBaseName = 'jpa-impl'
+project.version = '1.0.0'
+
+jar {
+
+	manifest{
+		attributes( 'Spring-Context':'SpringContext-Common.xml')
+		attributes( 'DynamicImport-Package':'*')
+		attributes( 'Include-Resource':'.');
+		attributes( 'Import-Lib':'lib');
+	}
+}
+
+
