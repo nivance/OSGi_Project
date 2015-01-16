@@ -1,0 +1,32 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+dependencies {
+	compile 'org.apache.avro:avro:1.7.6'
+	compile 'org.projectlombok:lombok:1.12.2'
+	compile 'com.google.protobuf:protobuf-java:2.5.0'
+	compile "org.apache.commons:commons-lang3:3.1"
+	testCompile 'junit:junit:4.8.2'
+}
+
+tasks.withType(Compile) { options.encoding = "UTF-8" }
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+	classifier = 'sources'
+	from sourceSets.main.allSource
+}
+
+artifacts { archives sourcesJar }
+
+project.group = 'nivance'
+project.archivesBaseName = 'serialize-util'
+project.version = '1.0.0'
+
+jar {
+	manifest{
+		attributes( 'Created-By':'nivance')
+		attributes( 'Bundle-Version':'1.0.0')
+		attributes( 'Bundle-Name':'serializeutil')
+		attributes( 'Bundle-SymbolicName':'serializeutil')
+	}
+}
